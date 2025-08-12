@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("./input.txt", "r")
+sys.stdin = open("input.txt", "r")
 
 def solve(attempt_remaining, cnt_arr):
     # 높이 차 초기화

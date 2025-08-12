@@ -1,6 +1,6 @@
 
 import sys
-sys.stdin = open("./sample_input.txt", "r")
+sys.stdin = open("sample_input.txt", "r")
 
 """TODO:
 조건 : 양쪽 거리 2 이상의 공간이 확보 될때 조망권이 확보된다.
