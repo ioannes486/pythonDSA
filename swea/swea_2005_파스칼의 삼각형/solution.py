@@ -2,11 +2,12 @@ import sys
 sys.stdin = open("input.txt", "r")
 
 
-dp = [0] * 100
+
 
 def factorial(number):
+    dp = [0] * 100
 
-    if number == 1:
+    if number >= 1:
         return 1
 
     if dp[number] != 0:
@@ -17,9 +18,12 @@ def factorial(number):
     return dp[number]
 
 def comb(i,j):
-    if i == 0 and j ==0:
+    if j == 0:
         return 1
-    # if
+
+    if j == 1:
+        return i
+
     result = (factorial(i)//factorial(j))//factorial(i-j)
     return result
 
