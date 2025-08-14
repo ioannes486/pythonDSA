@@ -13,24 +13,29 @@ sys.stdin = open("input.txt", "r")
 - 아이디어
 """
 
-def solve(V,E,arr):
 
+def dfs(graph, node_idx, visited):
+    visited[node_idx] = True
 
-    return graph
+    for i in graph[node_idx]:
+        if not visited[i]:
+            dfs(graph, i, visited)
 
+def solve(V,S,G,graph):
+    visited = [False for _ in range(V+1)]
+    dfs(graph, S, visited)
+    if visited[G]:
+        return 1
+    return 0
 
 T = int(input())
 for test_case in range(1, T + 1):
-    # 입력
     V, E = map(int, input().split())
     arr = [list(map(int, input().split())) for _ in range(E)]
-
+    S, G = map(int, input().split())
     graph = [[] for _ in range(V+1)]
 
+    for elem in arr:
+        graph[elem[0]].append(elem[1])
 
-    # for elem in arr:
-    #     graph[elem[0]].append(elem[1])
-
-
-    # 출력
-    print(f"#{test_case} {solve(V,E,graph)}")
+    print(f"#{test_case} {solve(V,S,G,graph)}")
