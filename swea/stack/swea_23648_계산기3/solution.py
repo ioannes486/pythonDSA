@@ -32,6 +32,11 @@ icp = {
 }
 
 
+def convert_string_to_number(target):
+    if isinstance(target, str):
+        target = int(target)
+    return target
+
 def solve(formula):
     stack = []
     postfix = ""
@@ -45,35 +50,40 @@ def solve(formula):
                 postfix += stack.pop()
             stack.pop()
 
-        # 스택 제일 위의 원소가 들어가는 원소의 우선순위보다 큰 경우
+        # 토큰값이 연산자이고 닫는괄호가 아닌 경우
         else:
+            # 스택이 비어있거나 여는 괄호면 그냥 집어넣음
             if (not stack) or (token == '('):
                 stack.append(token)
+
+            # 스택 제일 위의 원소의 우선순위가 토큰의 우선순위보다 낮은 경우 토큰 집어넣기
             elif isp[stack[-1]] < icp[token]:
                 stack.append(token)
+
+            # 스택 제일 위의 원소 우선순위가 들어가는 원소의 우선순위보다 큰 경우
             elif isp[stack[-1]] >= icp[token]:
-                while stack and isp[stack[-1]] >= icp[token]:
+                while isp[stack[-1]] >= icp[token]:
                     postfix += stack.pop()
 
+                stack.append(token)
+
+
+    for token in postfix:
+        if token not in '+-*/':
             stack.append(token)
-
-
-    # for token in postfix:
-    #     if token not in '+-*/':
-    #         stack.append(token)
-    #     else:
-    #         if len(stack) >= 2:
-    #             b = int(stack.pop())
-    #             a = int(stack.pop())
-    #             if token == '+':
-    #                 stack.append(a+b)
-    #             elif token == '-':
-    #                 stack.append(a-b)
-    #             elif token == '*':
-    #                 stack.append(a*b)
-    #             elif token == '/':
-    #                 stack.append(a/b)
-    return postfix
+        else:
+            if len(stack) >= 2:
+                b = convert_string_to_number(stack.pop()) # 여기서 인트로 바꿔버리는 거였던 거임
+                a = convert_string_to_number(stack.pop())
+                if token == '+':
+                    stack.append(a+b)
+                elif token == '-':
+                    stack.append(a-b)
+                elif token == '*':
+                    stack.append(a*b)
+                elif token == '/':
+                    stack.append(a/b)
+    return stack[0]
 
 
 
@@ -95,4 +105,4 @@ for test_case in range(1, T + 1):
         formula = formula + ")"
 
     # 출력
-    print(f"#{test_case} {solve(N, formula)}")
+    print(f"#{test_case} {solve(formula)}")
