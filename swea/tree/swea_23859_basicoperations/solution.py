@@ -23,8 +23,8 @@ def solve(tree_values, tree_children):
 
 def post_order(node, tree_values, tree_children):
     if node != 0:
-        post_order(tree_children[node][0])
-        post_order(tree_children[node][1])
+        post_order(tree_children[node][0],tree_values, tree_children)
+        post_order(tree_children[node][1], tree_values, tree_children)
         calculate(node, tree_values)
 
 
