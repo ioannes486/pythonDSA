@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -13,10 +14,11 @@ sys.stdin = open("input.txt", "r")
 - 아이디어
 """
 
+
 def solve(text):
     text_length = len(text)
-    for i in range(text_length-1):
-        if text[i] != text[text_length-i-1]:
+    for i in range(text_length - 1):
+        if text[i] != text[text_length - i - 1]:
             return 0
     return 1
 

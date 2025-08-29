@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -16,8 +17,10 @@ sys.stdin = open("input.txt", "r")
 """
 
 from collections import deque
+
+
 def bfs(start, graph, G):
-    visited = [-1 for _ in range(V+1)]
+    visited = [-1 for _ in range(V + 1)]
     q = deque([start])
     visited[start] = 0
 
@@ -31,6 +34,7 @@ def bfs(start, graph, G):
 
     return visited[G]
 
+
 def solve(graph, S, G):
     result = bfs(S, graph, G)
     return result if result > 0 else 0
@@ -39,9 +43,9 @@ def solve(graph, S, G):
 T = int(input())
 for test_case in range(1, T + 1):
     # 입력
-    V, E = map(int, input().split()) # 노드 수, 간선 수
+    V, E = map(int, input().split())  # 노드 수, 간선 수
 
-    graph = [[] for _ in range(V+1)]
+    graph = [[] for _ in range(V + 1)]
     for i in range(E):
         a, b = map(int, input().split())
         graph[a].append(b)

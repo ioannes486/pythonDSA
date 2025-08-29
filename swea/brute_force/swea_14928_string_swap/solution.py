@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -13,10 +14,11 @@ sys.stdin = open("input.txt", "r")
 - 아이디어
 """
 
+
 def solve(N, target_string):
     result = ""
     for i in range(N):
-        result += target_string[N-i-1]
+        result += target_string[N - i - 1]
 
     return result
 
@@ -26,7 +28,6 @@ for test_case in range(1, T + 1):
     #
     N = int(input())
     target_string = input()
-
 
     # 출력
     print(f"#{test_case} {solve(N, target_string)}")

@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -19,6 +20,7 @@ sys.stdin = open("input.txt", "r")
 가로합이랑 세로합은 상수니깐 미리 구해놓자
 """
 
+
 def solve(arr):
     # 변수 초기화
     # 대각 합 두개
@@ -26,13 +28,13 @@ def solve(arr):
     trace_sum_right_to_left = 0
 
     # 수직, 수평합
-    vertical_sum = -float('inf')
-    horizontal_sum = -float('inf')
+    vertical_sum = -float("inf")
+    horizontal_sum = -float("inf")
 
     # 대각합 구하기
     for i in range(100):
         trace_sum_left_to_right += arr[i][i]
-        trace_sum_right_to_left += arr[i][100-1-i]
+        trace_sum_right_to_left += arr[i][100 - 1 - i]
 
     # 수직 , 수평합 구하기
     # 1. 수평합 구하기
@@ -64,8 +66,6 @@ T = int(input())
 for test_case in range(1, T + 1):
     # 입력
     arr = [list(map(int, input().split())) for _ in range(100)]
-
-
 
     # 출력
     print(f"#{test_case} {solve(arr)}")

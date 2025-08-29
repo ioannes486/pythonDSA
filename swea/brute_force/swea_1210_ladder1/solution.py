@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -23,10 +24,13 @@ sys.stdin = open("input.txt", "r")
 
 사다리의 크기는 모지?
 """
+
+
 class Directions:
     LEFT = "left"
     RIGHT = "right"
     VERTICAL = "vertical"
+
 
 def decide_direction(i_idx, j_idx, direction):
 
@@ -43,6 +47,7 @@ def decide_direction(i_idx, j_idx, direction):
     else:
         direction = Directions.RIGHT
     return direction
+
 
 def solve(arr, x_idx):
 
@@ -63,6 +68,7 @@ def solve(arr, x_idx):
         elif direction == Directions.VERTICAL:
             i_idx -= 1
     return j_idx
+
 
 T = int(input())
 for test_case in range(1, T + 1):

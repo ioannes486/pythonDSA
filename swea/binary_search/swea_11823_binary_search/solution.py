@@ -1,7 +1,7 @@
 def solve(total_page, A_target_page, B_target_page):
     l = 1
     r = total_page
-    middle = (l+r) // 2
+    middle = (l + r) // 2
 
     # 먼저 구하기
     A_count = 0

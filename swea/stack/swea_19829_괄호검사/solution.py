@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -14,12 +15,13 @@ sys.stdin = open("input.txt", "r")
     주어진 괄호에 대해 짝이 맞으면 1, 안맞으면 0
 - 아이디어
 """
-LEFT_PARENTHESIS = '('
-RIGHT_PARENTHESIS = ')'
+LEFT_PARENTHESIS = "("
+RIGHT_PARENTHESIS = ")"
+
 
 def solve(parentheses):
     top = -1
-    stack = [0] * (len(parentheses)+1)
+    stack = [0] * (len(parentheses) + 1)
 
     for parenthesis in parentheses:
         if parenthesis == LEFT_PARENTHESIS:
@@ -35,8 +37,6 @@ def solve(parentheses):
         return 1
     else:
         return 0
-
-
 
 
 T = int(input())

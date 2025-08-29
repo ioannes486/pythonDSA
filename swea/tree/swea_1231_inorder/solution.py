@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -15,6 +16,7 @@ sys.stdin = open("input.txt", "r")
 - 아이디어
 """
 
+
 def inorder(node):
     global result
     if node <= last:
@@ -27,7 +29,7 @@ T = 10
 for test_case in range(1, T + 1):
     # 입력
     N = int(input())
-    tree = ["0"] * (N+1)
+    tree = ["0"] * (N + 1)
     for i in range(N):
         temp = list(input().split())
         tree[int(temp[0])] = temp[1]

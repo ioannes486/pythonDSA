@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("sample_input.txt", "r")
 
 """TODO:
@@ -15,6 +16,7 @@ sys.stdin = open("sample_input.txt", "r")
 - 아이디어
 """
 
+
 def solve():
 
     return
@@ -28,10 +30,9 @@ for test_case in range(1, T + 1):
     N = int(input())
     arr = list(input().split())
 
-    cnt_arr = [0]*10
+    cnt_arr = [0] * 10
     for i in range(N):
         item = arr[i]
-
 
         # 순차탐색
         idx = 0
@@ -42,11 +43,10 @@ for test_case in range(1, T + 1):
 
     cnt_arr[idx] += 1
 
-        # temp = [0]*N
+    # temp = [0]*N
 
-        # for number in cnt_arr:
-        #     temp[number]
-
+    # for number in cnt_arr:
+    #     temp[number]
 
     # 출력
     print(f"#{test_case} {cnt_arr}")

@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -14,16 +15,17 @@ sys.stdin = open("input.txt", "r")
 - 아이디어
 """
 
+
 def solve(operators):
-    stack = [0]* 256
+    stack = [0] * 256
     top = -1
     for operator in operators:
-        if operator not in '+-*/.':
+        if operator not in "+-*/.":
             top += 1
             stack[top] = operator
 
         else:
-            if operator == '.':
+            if operator == ".":
                 if top > 0:
                     return "error"
                 else:
@@ -35,16 +37,17 @@ def solve(operators):
                 left_operand = int(stack[top])
 
                 # 계산하기
-                if operator == '+':
+                if operator == "+":
                     stack[top] = left_operand + right_operand
-                elif operator == '-':
+                elif operator == "-":
                     stack[top] = left_operand - right_operand
-                elif operator == '*':
+                elif operator == "*":
                     stack[top] = left_operand * right_operand
-                elif operator == '/':
+                elif operator == "/":
                     stack[top] = left_operand // right_operand
             else:
                 return "error"
+
 
 T = int(input())
 for test_case in range(1, T + 1):

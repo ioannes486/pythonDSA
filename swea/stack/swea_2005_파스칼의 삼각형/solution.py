@@ -1,8 +1,10 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 # 메모이제이션 테이블
 dp = [0] * 11
+
 
 def factorial(number):
 
@@ -12,23 +14,25 @@ def factorial(number):
     if dp[number] != 0:
         return dp[number]
 
-    dp[number] = number * factorial(number-1)
+    dp[number] = number * factorial(number - 1)
 
     return dp[number]
 
-def comb(i,j):
+
+def comb(i, j):
     if j == 0:
         return 1
 
     if j == i:
         return 1
-    result = (factorial(i)//factorial(j))//factorial(i-j)
+    result = (factorial(i) // factorial(j)) // factorial(i - j)
     return result
+
 
 def solve(N):
     for i in range(N):
-        for j in range(i+1):
-            print(comb(i,j), end=" ")
+        for j in range(i + 1):
+            print(comb(i, j), end=" ")
         print()
 
 

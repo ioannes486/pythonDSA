@@ -17,6 +17,7 @@ import copy
     di,dj활용, dfs, visited
 """
 
+
 def solve(N, maze):
     visited = copy.deepcoc
     return

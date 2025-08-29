@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -13,6 +14,7 @@ sys.stdin = open("input.txt", "r")
 - 아이디어
 """
 
+
 def solve():
 
     return
@@ -26,9 +28,6 @@ for test_case in range(1, T + 1):
     arr = list(map(int, input().split()))
 
     max_height = max(arr)
-
-
-
 
     # 출력
     print(f"#{test_case} {arr}")

@@ -1,5 +1,6 @@
 import sys
 from collections import deque
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -23,6 +24,7 @@ sys.stdin = open("input.txt", "r")
     
     하나가 동떨어져 있으면 그 하나는 남을 수도 있고
 """
+
 
 def solve(text):
     stack = deque()

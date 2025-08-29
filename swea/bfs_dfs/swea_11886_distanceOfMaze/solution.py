@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -26,9 +27,11 @@ sys.stdin = open("input.txt", "r")
 from collections import deque
 
 
-di = [0,1,0,-1]
-dj = [1,0,-1,0]
-def dfs(graph, start, goal,N):
+di = [0, 1, 0, -1]
+dj = [1, 0, -1, 0]
+
+
+def dfs(graph, start, goal, N):
     visited = [[-1 for _ in range(N)] for _ in range(N)]
     q = deque([start])
     visited[start[0]][start[1]] = 0
@@ -39,7 +42,7 @@ def dfs(graph, start, goal,N):
             ni = i_idx + di[nxt]
             nj = j_idx + dj[nxt]
 
-            if 0<=ni<N and 0<=nj<N:
+            if 0 <= ni < N and 0 <= nj < N:
                 if graph[ni][nj] != 1 and visited[ni][nj] == -1:
                     visited[ni][nj] = visited[i_idx][j_idx] + 1
                     q.append([ni, nj])
@@ -54,9 +57,7 @@ for test_case in range(1, T + 1):
     N = int(input())
     graph = [[0 for _ in range(N)] for _ in range(N)]
 
-
-
-    start = goal = [0,0]
+    start = goal = [0, 0]
     for i in range(N):
         line = list(input())
         for j in range(N):
@@ -64,15 +65,12 @@ for test_case in range(1, T + 1):
             graph[i][j] = val
 
             if val == 2:
-                start = [i,j]
+                start = [i, j]
                 continue
 
-            if  val == 3:
-                goal = [i,j]
+            if val == 3:
+                goal = [i, j]
                 continue
-
-
-
 
     # 출력
     print(f"#{test_case} {dfs(graph, start, goal, N)}")

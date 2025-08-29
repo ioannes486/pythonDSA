@@ -1,5 +1,3 @@
-
-
 """TODO:
 - 상수
 
@@ -19,14 +17,13 @@
 - 아이디어
 """
 
-
 import sys
 from collections import deque
 
 sys.stdin = open("input.txt", "r")
 
 
-def solve( N, M, pizzas ):
+def solve(N, M, pizzas):
 
     q = deque(list(range(N)))
     rotation_number = 0
@@ -40,7 +37,7 @@ def solve( N, M, pizzas ):
             q.popleft()
             if idx < M:
                 q.append(idx)
-                for _ in range(N-1):
+                for _ in range(N - 1):
                     q.append(q.popleft())
                 idx += 1
         rotation_number += 1

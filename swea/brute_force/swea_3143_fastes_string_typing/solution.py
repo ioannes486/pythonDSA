@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -16,11 +17,13 @@ sys.stdin = open("input.txt", "r")
     여러군데에 적용을 할 수 있는 경우
 """
 
+
 def count_length(txt):
     length = 0
     for _ in txt:
-        length+=1
+        length += 1
     return length
+
 
 def solve(A, B):
 
@@ -30,17 +33,18 @@ def solve(A, B):
     B_count = 0
 
     A_idx = 0
-    while A_idx < A_length-B_length+1:
+    while A_idx < A_length - B_length + 1:
         B_idx = 0
-        while B_idx < B_length and A[A_idx+B_idx] == B[B_idx]:
+        while B_idx < B_length and A[A_idx + B_idx] == B[B_idx]:
             B_idx += 1
         if B_idx == B_length:
             B_count += 1
             A_idx += B_length
         else:
             A_idx += 1
-    result = A_length - (B_length-1) * B_count
+    result = A_length - (B_length - 1) * B_count
     return result
+
 
 T = int(input())
 for test_case in range(1, T + 1):

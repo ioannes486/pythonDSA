@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -18,23 +19,27 @@ chill할 영역의 개수 N : 2이상 30 이하
 1이면 red
 """
 
+
 def paint(palette, dowhajee):  # void
     strt_i, strt_j, due_i, due_j, color = palette
 
     # 순회돌면서 도화지에 칠하기
-    for i in range(strt_i, due_i+1):
-        for j in range(strt_j, due_j+1):
+    for i in range(strt_i, due_i + 1):
+        for j in range(strt_j, due_j + 1):
             if dowhajee[i][j] == 0:
                 dowhajee[i][j] += color
 
-            elif dowhajee[i][j] == 1:  # 빨강으로 칠해져 있는 경우 파란색만 chill할 수 있음
+            elif (
+                dowhajee[i][j] == 1
+            ):  # 빨강으로 칠해져 있는 경우 파란색만 chill할 수 있음
                 if color == 2:
                     dowhajee[i][j] += color
 
-            elif dowhajee[i][j] == 2:  # 파랑으로 칠해져 있는 경우 빨간 색만 chill할 수 있음
+            elif (
+                dowhajee[i][j] == 2
+            ):  # 파랑으로 칠해져 있는 경우 빨간 색만 chill할 수 있음
                 if color == 1:
                     dowhajee[i][j] += color
-
 
 
 def solve(N, arr):
@@ -58,7 +63,6 @@ for test_case in range(1, T + 1):
     # 입력
     N = int(input())
     arr = [list(map(int, input().split())) for _ in range(N)]
-
 
     # 출력
     print(f"#{test_case} {solve(N, arr)}")

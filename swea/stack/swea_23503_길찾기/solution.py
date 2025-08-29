@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -16,6 +17,7 @@ sys.stdin = open("input.txt", "r")
     길의 총 개수 = 어디부터 어디까지 갈 수 있다를 표현한 1차원 배열 or 튜플 or 표현의 개수
     N을 받아서 2N까지 돌려야 할듯?
 """
+
 
 def dfs(graph, node_idx, visited):
     visited[node_idx] = True
@@ -40,8 +42,8 @@ for test_case in range(1, T + 1):
     # 입력
     N = int(input())
     source = list(map(int, input().split()))
-    graph = [[] for _ in range(100)] # 0번부터 99번까지 노드 필요함
+    graph = [[] for _ in range(100)]  # 0번부터 99번까지 노드 필요함
     for i in range(N):
-        graph[source[2*i]].append(source[2*i+1])
+        graph[source[2 * i]].append(source[2 * i + 1])
 
     print(f"#{test_case} {solve(graph)}")

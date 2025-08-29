@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -21,13 +22,14 @@ sys.stdin = open("input.txt", "r")
 """
 
 station_coverages = {
-    "A" : 1,
-    "B" : 2,
-    "C" : 3,
+    "A": 1,
+    "B": 2,
+    "C": 3,
 }
 
-di = [1,0,-1,0]
-dj = [0,1,0,-1]
+di = [1, 0, -1, 0]
+dj = [0, 1, 0, -1]
+
 
 def solve(N, arr):
     home_count = 0
@@ -37,21 +39,18 @@ def solve(N, arr):
             location_category = arr[i][j]
             if location_category in "ABC":
                 coverage = station_coverages[location_category]
-                for n in range(1, coverage+1):
+                for n in range(1, coverage + 1):
                     for k in range(4):
-                        ni = i + n*di[k]
-                        nj = j + n*dj[k]
-                        if 0<=ni<N and 0<=nj<N:
-                            if arr[ni][nj] == 'H':
-                                arr[ni][nj] = 'Y'
+                        ni = i + n * di[k]
+                        nj = j + n * dj[k]
+                        if 0 <= ni < N and 0 <= nj < N:
+                            if arr[ni][nj] == "H":
+                                arr[ni][nj] = "Y"
 
     for i in range(N):
         for j in range(N):
-            if arr[i][j] == 'H':
+            if arr[i][j] == "H":
                 home_count += 1
-
-
-
 
     return home_count
 

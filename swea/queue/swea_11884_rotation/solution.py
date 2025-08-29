@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -17,11 +18,11 @@ sys.stdin = open("input.txt", "r")
 
 def solve(N, M, arr):
     front = -1
-    rear = N-1
+    rear = N - 1
 
     for _ in range(M):
         front = (front + 1) % N
-        temp = arr[front] # dequeue
+        temp = arr[front]  # dequeue
 
         rear = (rear + 1) % N
         arr[rear] = temp

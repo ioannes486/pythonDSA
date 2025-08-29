@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -13,12 +14,13 @@ sys.stdin = open("input.txt", "r")
 - 아이디어
 """
 
-def solve(N,arr): #
+
+def solve(N, arr):  #
     # 모든 부분집합 구하기
-    for i in range(1, 1<<N):
+    for i in range(1, 1 << N):
         temp_sum = 0
         for j in range(N):
-            if i & (1<<j):
+            if i & (1 << j):
                 # 합을 다 더해보기
                 temp_sum += arr[j]
         # 합을 구했을 때 0이면 1반환

@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -16,19 +17,19 @@ sys.stdin = open("input.txt", "r")
 - 아이디어
 """
 isp = {
-    '(': 0,
-    '*': 2,
-    '/': 2,
-    '+': 1,
-    '-': 1,
+    "(": 0,
+    "*": 2,
+    "/": 2,
+    "+": 1,
+    "-": 1,
 }
 
 icp = {
-    '(': 3,
-    '*': 2,
-    '/': 2,
-    '+': 1,
-    '-': 1,
+    "(": 3,
+    "*": 2,
+    "/": 2,
+    "+": 1,
+    "-": 1,
 }
 
 
@@ -37,23 +38,24 @@ def convert_string_to_number(target):
         target = int(target)
     return target
 
+
 def solve(formula):
     stack = []
     postfix = ""
     for token in formula:
 
-        if token not in '(+-*/)':
+        if token not in "(+-*/)":
             postfix += token
         # 닫는 괄호 만나면 여는 괄호까지 가기
-        elif token == ')':
-            while stack and stack[-1] != '(':
+        elif token == ")":
+            while stack and stack[-1] != "(":
                 postfix += stack.pop()
             stack.pop()
 
         # 토큰값이 연산자이고 닫는괄호가 아닌 경우
         else:
             # 스택이 비어있거나 여는 괄호면 그냥 집어넣음
-            if (not stack) or (token == '('):
+            if (not stack) or (token == "("):
                 stack.append(token)
 
             # 스택 제일 위의 원소의 우선순위가 토큰의 우선순위보다 낮은 경우 토큰 집어넣기
@@ -67,30 +69,24 @@ def solve(formula):
 
                 stack.append(token)
 
-
     for token in postfix:
-        if token not in '+-*/':
+        if token not in "+-*/":
             stack.append(token)
         else:
             if len(stack) >= 2:
-                b = convert_string_to_number(stack.pop()) # 여기서 인트로 바꿔버리는 거였던 거임
+                b = convert_string_to_number(
+                    stack.pop()
+                )  # 여기서 인트로 바꿔버리는 거였던 거임
                 a = convert_string_to_number(stack.pop())
-                if token == '+':
-                    stack.append(a+b)
-                elif token == '-':
-                    stack.append(a-b)
-                elif token == '*':
-                    stack.append(a*b)
-                elif token == '/':
-                    stack.append(a/b)
+                if token == "+":
+                    stack.append(a + b)
+                elif token == "-":
+                    stack.append(a - b)
+                elif token == "*":
+                    stack.append(a * b)
+                elif token == "/":
+                    stack.append(a / b)
     return stack[0]
-
-
-
-
-
-
-
 
 
 T = int(input())

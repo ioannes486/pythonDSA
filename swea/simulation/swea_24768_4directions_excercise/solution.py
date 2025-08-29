@@ -1,10 +1,11 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 
 def solve(N, arr):
-    di = [0,1,0,-1]
-    dj = [1,0,-1,0]
+    di = [0, 1, 0, -1]
+    dj = [1, 0, -1, 0]
     total_abs_sum = 0
     for i in range(N):
         for j in range(N):
@@ -12,7 +13,7 @@ def solve(N, arr):
             for d in range(4):
                 ni = i + di[d]
                 nj = j + dj[d]
-                if 0<=ni<N and 0<=nj<N:
+                if 0 <= ni < N and 0 <= nj < N:
                     target = arr[i][j] - arr[ni][nj]
                     if target >= 0:
                         abs_sum += target

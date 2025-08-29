@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -12,18 +13,19 @@ sys.stdin = open("input.txt", "r")
 
 - 아이디어
 """
-di = [1,0,-1,0]
-dj = [0,1,0,-1]
+di = [1, 0, -1, 0]
+dj = [0, 1, 0, -1]
+
+
 def dfs(i_index, j_index, maze):
     maze[i_index][j_index] = 1
 
     for direction_index in range(4):
         ni = i_index + di[direction_index]
         nj = j_index + dj[direction_index]
-        if 0 <= ni < N and 0<= nj < N:
+        if 0 <= ni < N and 0 <= nj < N:
             if maze[ni][nj] != 1:
                 dfs(ni, nj, maze)
-
 
 
 T = int(input())
@@ -53,7 +55,6 @@ for test_case in range(1, T + 1):
     result = 0
     if maze[goal_i][goal_j] == 1:
         result = 1
-
 
     # 출력
     print(f"#{test_case} {result}")

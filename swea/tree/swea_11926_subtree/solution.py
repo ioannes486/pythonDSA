@@ -1,7 +1,8 @@
-'''
+"""
 1 3
 1 2 1 3 2 4 3 5 3 6 4 7
-'''
+"""
+
 """TODO:
 - 상수
 
@@ -17,7 +18,9 @@
 """
 
 import sys
+
 sys.stdin = open("input.txt", "r")
+
 
 def preorder(node):
     global result
@@ -25,8 +28,6 @@ def preorder(node):
         result += 1
         preorder(tree[node][0])  # 12번의 자식은 0
         preorder(tree[node][1])
-
-
 
 
 T = int(input())

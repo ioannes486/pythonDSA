@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -26,6 +27,7 @@ sys.stdin = open("input.txt", "r")
     
     
 """
+
 
 def solve():
 

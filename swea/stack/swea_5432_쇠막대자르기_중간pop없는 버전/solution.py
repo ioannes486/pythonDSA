@@ -1,23 +1,24 @@
 import sys
+
 sys.stdin = open("../swea_5432_쇠막대자르기/input.txt", "r")
 
 
 def solve(text):
     stack = []
-    total_count = 0;
+    total_count = 0
 
     i = 0
     text_length = len(text)
     while i < text_length:
         char = text[i]
 
-        if char == '(':
+        if char == "(":
             stack.append(char)
 
         else:
             stack.pop()
 
-            if i > 0 and text[i-1] =='(':
+            if i > 0 and text[i - 1] == "(":
                 total_count += len(stack)
             else:
                 total_count += 1

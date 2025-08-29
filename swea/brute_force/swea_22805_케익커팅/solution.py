@@ -3,7 +3,7 @@
 
 """TODO:
 - 상수
-    
+
 - 변수
     N : 배열의 크기
 - 조건(제약사항)
@@ -15,9 +15,9 @@
 - 아이디어
 """
 
+
 def solve(N, strawberries):
     # 구분선이 각각 1, 1에있을 때 딸기 나누기
-
 
     for line_i in range(1, N):
         for line_j in range(1, N):
@@ -46,7 +46,12 @@ def solve(N, strawberries):
                 for j in range(line_j, N):
                     num_of_strawberries_in_4 += strawberries[i][j]
 
-            if num_of_strawberries_in_1 == num_of_strawberries_in_2 == num_of_strawberries_in_3 == num_of_strawberries_in_4:
+            if (
+                num_of_strawberries_in_1
+                == num_of_strawberries_in_2
+                == num_of_strawberries_in_3
+                == num_of_strawberries_in_4
+            ):
                 return 1
     return 0
 

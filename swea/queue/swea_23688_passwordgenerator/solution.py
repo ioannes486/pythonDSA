@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -16,12 +17,13 @@ sys.stdin = open("input.txt", "r")
     마지막으로 뺄쌤 연산을 수행하고 0이 되면 그 원소를 옮긴 다음 암호 출력하기
 """
 
+
 def solve(arr, N):
 
     cycle_count = 1
 
     front = 0
-    rear = N-1
+    rear = N - 1
     while True:
 
         if cycle_count == 6:
@@ -34,18 +36,16 @@ def solve(arr, N):
         front = (front + 1) % N
         rear = (rear + 1) % N
 
-        if arr[rear] <=  0:
+        if arr[rear] <= 0:
             arr[rear] = 0
             result = ""
             for i in range(N):
-                result += str(arr[(i+front) % N])
+                result += str(arr[(i + front) % N])
                 result += " "
             return result.rstrip()
 
         # 한 사이클을 돌면 사이클 초기화
         cycle_count += 1
-
-
 
 
 T = int(input())

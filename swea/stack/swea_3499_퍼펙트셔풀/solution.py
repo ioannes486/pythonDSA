@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -18,24 +19,25 @@ sys.stdin = open("input.txt", "r")
     i의 나머지가 1이면 후행스택에 쌀기
 """
 
+
 def solve(N, deck):
     first_stack = []
     second_stack = []
     shuffled_stack = []
 
     for i in range(N):
-        if i < N/2:
+        if i < N / 2:
             first_stack.append(deck[i])
 
         else:
             second_stack.append(deck[i])
 
     if len(first_stack) > len(second_stack):
-        for i in range(N//2):
+        for i in range(N // 2):
             shuffled_stack.append(first_stack.pop())
             shuffled_stack.append(second_stack.pop())
     else:
-        for i in range(N//2):
+        for i in range(N // 2):
             shuffled_stack.append(second_stack.pop())
             shuffled_stack.append(first_stack.pop())
 
@@ -43,6 +45,7 @@ def solve(N, deck):
         shuffled_stack.append(first_stack.pop())
 
     return " ".join(reversed(shuffled_stack))
+
 
 8
 T = int(input())

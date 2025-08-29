@@ -1,12 +1,13 @@
 import sys
 from math import comb
+
 sys.stdin = open("input.txt", "r")
 
 
 def solve(N):
     for i in range(N):
-        for j in range(i+1):
-            print(comb(i,j), end=" ")
+        for j in range(i + 1):
+            print(comb(i, j), end=" ")
         print()
 
 

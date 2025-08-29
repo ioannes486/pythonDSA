@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -26,8 +27,9 @@ sys.stdin = open("input.txt", "r")
     
 """
 #    >  아  < ^
-di = [0,1,0,-1]
-dj = [1,0,-1,0]
+di = [0, 1, 0, -1]
+dj = [1, 0, -1, 0]
+
 
 def solve(N, arr):
 
@@ -36,10 +38,10 @@ def solve(N, arr):
     i_idx = 0
     j_idx = 0
 
-    direction_idx = 0 # 처음엔 우측방향
+    direction_idx = 0  # 처음엔 우측방향
 
     # 레이저가 배열 안에 있을 때
-    while 0<=i_idx<N and 0<=j_idx<N:
+    while 0 <= i_idx < N and 0 <= j_idx < N:
 
         # 전진
         if arr[i_idx][j_idx] == 0:
@@ -52,7 +54,7 @@ def solve(N, arr):
             # 수평 방향일 경우
             if direction_idx % 2 == 0:
                 # 좌회전 하기
-                direction_idx = (direction_idx+3) % 4
+                direction_idx = (direction_idx + 3) % 4
             # 수직 방향일 경우
             else:
                 # 우회전 하기
@@ -72,12 +74,9 @@ def solve(N, arr):
             # 수직 방향일 경우
             else:
                 # 좌회전 하기
-                direction_idx = (direction_idx+3) % 4
+                direction_idx = (direction_idx + 3) % 4
             i_idx += di[direction_idx]
             j_idx += dj[direction_idx]
-
-
-
 
     return reflection_count
 

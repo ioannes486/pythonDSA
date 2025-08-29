@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -23,10 +24,12 @@ sys.stdin = open("input.txt", "r")
 """
 
 
-di = [1,0,-1,0]
-dj = [0,1,0,-1]
+di = [1, 0, -1, 0]
+dj = [0, 1, 0, -1]
+
+
 def solve(N, arr):
-    min_cost_sum = float('inf')
+    min_cost_sum = float("inf")
     final_height = 0
     loc_i = 0
     loc_j = 0
@@ -36,22 +39,17 @@ def solve(N, arr):
 
             for target_height in range(5):
                 cost_sum = abs(arr[i][j] - target_height)
-            # 십자 영역 순회하면서 더하기
+                # 십자 영역 순회하면서 더하기
                 for dist in range(1, N):
                     for idx in range(4):
-                        ni = i + (dist*di[idx])
-                        nj = j + (dist*dj[idx])
-                        if 0<=ni<N and 0<=nj<N:
+                        ni = i + (dist * di[idx])
+                        nj = j + (dist * dj[idx])
+                        if 0 <= ni < N and 0 <= nj < N:
                             cost_sum += abs(arr[ni][nj] - target_height)
-
 
                 if min_cost_sum >= cost_sum:
                     min_cost_sum = cost_sum
                     final_height = target_height
-
-
-
-
 
     return min_cost_sum, final_height
 

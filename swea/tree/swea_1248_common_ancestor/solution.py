@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -13,6 +14,7 @@ sys.stdin = open("input.txt", "r")
 - 아이디어
 """
 
+
 def search_ancestor(node):
     s = tree[node][2]
     p = []
@@ -22,7 +24,9 @@ def search_ancestor(node):
         s = tree[s][2]
     return p
 
+
 def common_ancestor(p1, p2):
+    pass
 
 
 def preorder(node):
@@ -36,13 +40,13 @@ def preorder(node):
 T = int(input())
 for test_case in range(1, T + 1):
     # 입력
-    V,E, n1, n2 = map(int, input().split())
+    V, E, n1, n2 = map(int, input().split())
     temp = list(map(int, input().split()))
 
-    tree = [[0]*3 for _ in range(V+1)]
+    tree = [[0] * 3 for _ in range(V + 1)]
 
     for i in range(E):
-        p, c = temp[i*2], temp[i*2+1]
+        p, c = temp[i * 2], temp[i * 2 + 1]
         if tree[p][0] == 0:
             temp[p][0] = c
         else:

@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -14,45 +15,45 @@ sys.stdin = open("input.txt", "r")
     이건 지원이가 알려준 방법이 맞는 듯?
 """
 
+
 def solve(text):
 
     size = len(text)
-    stack = [0]*size
+    stack = [0] * size
     top = -1
     flag1 = False
     flag2 = False
     for char in text:
         flag1 = True
-        if char in ['(','{']:
+        if char in ["(", "{"]:
             flag2 = True
             top += 1
             stack[top] = char
 
-        elif char == '}':
+        elif char == "}":
             if top == -1:
                 return 0
 
-            if stack[top] == '(':
+            if stack[top] == "(":
                 return 0
 
-            if stack[top] == '{':
+            if stack[top] == "{":
                 top -= 1
 
-        elif char == ')':
+        elif char == ")":
             if top == -1:
                 return 0
 
-            if stack[top] == '{':
+            if stack[top] == "{":
                 return 0
 
-            if stack[top] == '(':
+            if stack[top] == "(":
                 top -= 1
 
     if top == -1 and flag2 and flag1:
         return 1
 
     return 0
-
 
 
 T = int(input())

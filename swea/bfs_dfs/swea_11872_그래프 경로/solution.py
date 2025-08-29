@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -21,19 +22,21 @@ def dfs(graph, node_idx, visited):
         if not visited[i]:
             dfs(graph, i, visited)
 
-def solve(V,S,G,graph):
-    visited = [False for _ in range(V+1)]
+
+def solve(V, S, G, graph):
+    visited = [False for _ in range(V + 1)]
     dfs(graph, S, visited)
     if visited[G]:
         return 1
     return 0
+
 
 T = int(input())
 for test_case in range(1, T + 1):
     V, E = map(int, input().split())
     arr = [list(map(int, input().split())) for _ in range(E)]
     S, G = map(int, input().split())
-    graph = [[] for _ in range(V+1)]
+    graph = [[] for _ in range(V + 1)]
 
     for elem in arr:
         graph[elem[0]].append(elem[1])

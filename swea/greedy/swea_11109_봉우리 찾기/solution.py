@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -19,27 +20,27 @@ sys.stdin = open("input.txt", "r")
     봉우리의 크기가 커
 """
 
+
 def solve(N, arr):
     if N == 1:
         return 1
 
     bongwoori_state = -1
     bongwoori_count = 0
-    for i in range(N-1):
+    for i in range(N - 1):
         if bongwoori_state == 0:
             bongwoori_count += 1
 
-        if arr[i] <= arr[i+1]:
+        if arr[i] <= arr[i + 1]:
             bongwoori_state = -1
 
-        elif arr[i] > arr[i+1]:
+        elif arr[i] > arr[i + 1]:
             bongwoori_state += 1
-
 
     if bongwoori_state == 0:
         bongwoori_count += 1
 
-    if arr[N-1] > arr[N-2]:
+    if arr[N - 1] > arr[N - 2]:
         bongwoori_count += 1
     return bongwoori_count
 

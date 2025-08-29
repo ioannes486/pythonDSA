@@ -3,8 +3,8 @@ def i_hate_flies(N, M, arr):
     result = 0
 
     # 배열 순회하기
-    for i in range(N-M+1):
-        for j in range(N-M+1):
+    for i in range(N - M + 1):
+        for j in range(N - M + 1):
             flies_amount_total = 0
 
             # 파리 때리기

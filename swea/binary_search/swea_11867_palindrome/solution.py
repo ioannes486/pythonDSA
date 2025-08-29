@@ -1,4 +1,5 @@
 import sys
+
 sys.stdin = open("input.txt", "r")
 
 """TODO:
@@ -17,9 +18,11 @@ sys.stdin = open("input.txt", "r")
     일단 배열에 넣기
     is_palindrome함수 사용하기
 """
+
+
 def is_palindrome(M, char_list):
-    for i in range(M//2):
-        if char_list[i] != char_list[M-i-1]:
+    for i in range(M // 2):
+        if char_list[i] != char_list[M - i - 1]:
             return False
     return True
 
@@ -27,12 +30,12 @@ def is_palindrome(M, char_list):
 def solve(N, M, arr):
 
     for i in range(N):
-        for j in range(N-M+1):
+        for j in range(N - M + 1):
             char_list1 = [0] * M
             char_list2 = [0] * M
             for k in range(M):
-                char_list1[k] = arr[i][j+k]
-                char_list2[k] = arr[j+k][i]
+                char_list1[k] = arr[i][j + k]
+                char_list2[k] = arr[j + k][i]
                 if is_palindrome(M, char_list1):
                     return "".join(char_list1)
                 elif is_palindrome(M, char_list2):
