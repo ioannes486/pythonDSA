@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open("sample_input.txt", "r")
+sys.stdin = open("input.txt", "r")
 
 """TODO:
 - 상수
