@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open("input4.txt", "r")
+sys.stdin = open("input.txt", "r")
 
 """TODO:
 - 상수
@@ -54,49 +54,57 @@ hex_to_bin = {
 }
 
 # 1. 56자리 암호를 파싱해보자
-def convert_binary_line_to_hex(line):
+def convert_hex_line_to_binary(line):
     binary_line = ""
 
-    l_idx = 0
-    r_idx = M-1
-
-    while line[l_idx] == '0' and l_idx < M-1:
-        l_idx += 1
-
-    while line[r_idx] == '0' and l_idx > 1:
-        r_idx -= 1
-
-    thickness = (r_idx - l_idx + 1) // 14
-    binary_code_length = 56 * thickness
     for char in line:
         unit = hex_to_bin[char]
         binary_line += unit
 
-    return binary_code_length, binary_line
+    return binary_line
 
 
-def parse_code():
+def parse_code(arr):
     # 1. 16진수를 2진수로 변환하기
     codes = []
+
     for i in range(N):
-        binary_code_length, line = convert_binary_line_to_hex(input())
-
+        line = arr[i]
         if "1" in line:
-            idx = len(line) - 1
-            while idx > 0:
-                if line[idx] == "1":
-                    code = line[idx - binary_code_length + 1 : idx + 1]
-                    if code not in codes:
-                        codes.append(code)
-                    else:
-                        break
-                    idx -= 56
-                    continue
 
-                if line[idx] == "0":
-                    idx -= 1
-                    continue
+            # 제일 첫번째 1의 좌표 구하기
+            idx = M*4-1
+            while line[idx] == "0":
+                idx -= 1
+
+            if arr[i-1][idx] == "0":
+
+
+
+                # 암호한개찾기
+                for _ in range(8):
+                    # 첫번째 숫자 구하기
+                    target_num = "1"
+                    change_cnt = 0
+                    ratio = [0, 0, 0, 0]
+                    while change_cnt < 4:
+                        if line[idx] == target_num:
+                            ratio[change_cnt] += 1
+                            idx -= 1
+                            continue
+
+                        if line[idx] != target_num:
+                            change_cnt += 1
+                            target_num = str(abs(int(target_num) - 1))
+                            continue
+
+                    min_ratio = min(ratio)
+                    for i in range(4):
+                        ratio[i] //= min_ratio
+                    codes.append(ratio)
     return codes
+
+
 
 
 
@@ -123,19 +131,25 @@ def validate_code(decrypted_code):
         return validation_number1 + validation_number2
     return 0
 
+def solve(arr):
+    codes = parse_code(arr)
+
+    return codes
+
 
 T = int(input())
 for test_case in range(1, T + 1):
     # 입력
     N, M = map(int, input().split())
 
-    codes = parse_code()
-    results = []
-    # for code in codes:
-        # decrypted_code = decrypt_code(code)
-        # results.append(decrypted_code)
-        # result = validate_code(decrypted_code)
-        # results.append(result)
+    arr = ["" for _ in range(N)]
 
-    print(f"#{test_case} {codes}")
+    for i in range(N):
+        line = input()
+        arr[i] = convert_hex_line_to_binary(line)
+
+
+
+
+    print(f"#{test_case} {solve(arr)}")
 
