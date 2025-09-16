@@ -2,11 +2,13 @@
 import sys
 sys.stdin = open("input.txt")
 
+
 def find_set(x):
     if x == parents[x]:
         return x
-    parents[x]  = find_set(parents[x])
-    return  parents[x]
+    parents[x] = find_set(parents[x])
+    return parents[x]
+
 
 def union(x, y):
     rep_x = find_set(x)
@@ -31,9 +33,6 @@ for _ in range(E):
 
 
 edges.sort(key=lambda x : x[2])
-
-print(edges)
-
 # 가중치가 작은 간선부터 순서대로 고르지
 # 사이클이 발생하면 고르지 말자
 # 언제까지?
@@ -56,7 +55,11 @@ for u, v, w in edges:
     if find_set(u) != find_set(v):
         parents[u] = v
 
-
-
-    if cnt == V -1:
+    if cnt == V - 1:
         break
+
+
+print(parents)
+
+for i in range(V):
+    print(find_set(i))
